@@ -1,0 +1,311 @@
+% Declare that this style file requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+% Provide the name of your page, the date it was last updated, and a comment about what it's used for
+\ProvidesPackage{mystyle}[2015/11/22 SeongMo's custom LaTeX style]
+
+% Now paste your code from the preamble here
+
+%% tlmgr conf texmf TEXMFHOME "<system>/texmf:<home>/texmf"
+%\chapterstyle{tandh}
+
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{kotex}
+\usepackage{iftex}
+\usepackage{backnaur}
+\ifPDFTeX
+  \usepackage{dhucs-nanumfont}
+\else \ifXeTeX
+  \setmainfont[Ligatures=TeX]{NanumMyeongjo}
+  \setsansfont[Ligatures=TeX, Scale=MatchUppercase]{NanumMyeongjo}
+  \setmainhangulfont[Ligatures=TeX, BoldFont={NanumMyeongjo Bold}]{NanumMyeongjo}
+  \setsanshangulfont[Ligatures=TeX, BoldFont={NanumMyeongjo Bold}]{NanumMyeongjo}
+  \xetexkofontregime[puncts=prevfont, colons=prevfont, cjksymbols=hangul]{latin}
+\else \ifLuaTeX
+  \setmainhangulfont{NanumMyeongjo}
+\fi \fi \fi
+\usepackage[svgnames,dvipsnames,usenames,table,conference]{xcolor}
+% \usepackage{pagecolor}
+% \usepackage{afterpage}
+\usepackage{tcolorbox}
+\tcbuselibrary{minted, skins, breakable}
+\newtcbox{\mytype}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,top=0mm,bottom=0mm,
+  right=0mm,left=4mm,arc=1pt,boxsep=2pt,before upper={\vphantom{dlg}},
+  colframe=green!50!black,coltext=green!25!black,colback=green!10!white,
+  overlay={\begin{tcbclipinterior}\fill[green!75!blue!50!white] (frame.south west)
+    rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=90] {type} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+
+\robustify{\mytype}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{minted, skins, breakable}
+\newtcbox{\myclass}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,top=0mm,bottom=0mm,
+  right=0mm,left=4mm,arc=1pt,boxsep=2pt,before upper={\vphantom{dlg}},
+  colframe=orange!50!black,coltext=orange!25!black,colback=orange!10!white,
+  overlay={\begin{tcbclipinterior}\fill[orange!75!red!50!white] (frame.south west)
+    rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=90] {class} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+
+\robustify{\myclass}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{minted, skins, breakable}
+\newtcbox{\mytemplate}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,top=0mm,bottom=0mm,
+  right=0mm,left=4mm,arc=1pt,boxsep=2pt,before upper={\vphantom{dlg}},
+  colframe=pink!50!black,coltext=pink!25!black,colback=pink!10!white,
+  overlay={\begin{tcbclipinterior}\fill[pink!75!red!50!white] (frame.south west)
+    rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=90] {tmpl} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+
+\robustify{\mytemplate}
+
+\usepackage{float}
+
+\usepackage{mathtools} % load amsmath macro
+\usepackage{tikz}
+\usetikzlibrary{trees,shadows, positioning}
+\usepackage{tikz-qtree}
+
+\usepackage{forest}
+
+\definecolor{fblue}{RGB}{92,144,192}
+\definecolor{fgreen}{RGB}{34,162,70}
+
+\newcommand\myfolder[2][fblue]{%
+\begin{tikzpicture}[overlay]
+\begin{scope}[xshift=20pt]
+\filldraw[rounded corners=1pt,fill=#1,draw=white,double=black]
+  (-23pt,10pt) -- ++(3pt,5pt) -- ++(18pt,0pt) -- ++(40:3pt) -- ++(9pt,0pt) -- ++(-40:3pt)
+  -- (20pt,15pt) -- (23pt,10pt) -- cycle;
+\filldraw[rounded corners,draw=white,double=black,top color=#1,bottom color=#1!30]
+  (-22pt,-12pt) -- ++(44pt,0pt) -- (25pt,12pt) coordinate (topr) -- ++(-50pt,0pt) coordinate (topl) -- cycle;
+\end{scope}
+\end{tikzpicture}%
+\makebox[35pt]{\raisebox{-3pt}{{\ttfamily/#2}}}%
+}
+\usepackage{menukeys}
+\usepackage{subcaption}
+
+\usepackage{bbding}
+\usepackage{tabu}
+\usepackage[stable]{footmisc}
+%\usepackage[sort&compress,comma,longnamesfirst]{natbib}
+\usepackage{natbib}
+\bibliographystyle{abbrvnat}
+
+% for local toc
+\usepackage{etoc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% setups for MEMOIR
+
+\settrimmedsize{11in}{210mm}{*}
+\setlength{\trimtop}{0pt}
+\setlength{\trimedge}{\stockwidth}
+\addtolength{\trimedge}{-\paperwidth}
+
+\settypeblocksize{7.75in}{33pc}{*}
+\setulmargins{4cm}{*}{*}
+\setlrmargins{1.25in}{*}{*}
+\setmarginnotes{17pt}{51pt}{\onelineskip}
+\setheadfoot{\onelineskip}{2\onelineskip}
+\setheaderspaces{*}{2\onelineskip}{*}
+
+\checkandfixthelayout
+\typeoutlayout
+\typeoutstandardlayout
+
+% 줄간격
+\linespread{1.4}
+% for multiline equation
+\everydisplay{\setstretch{1.2}}
+% 면주와 쪽번호
+\pagestyle{hangul}
+
+% 페이지 스타일
+% \makepagestyle{KNUworkshop}
+% \makeheadrule{KNUworkshop}{0pt}{0pt}
+
+\makechapterstyle{KNUchapter}{%
+   \setlength{\afterchapskip}{40pt}
+  \renewcommand*{\chapterheadstart}{\vspace*{-3\onelineskip}}
+  \renewcommand*{\afterchapternum}{\par\nobreak\vskip 25pt}
+   \renewcommand*{\chapnamefont}{\normalfont\LARGE\flushright}
+   \renewcommand*{\chapnumfont}{\normalfont\HUGE}
+   \renewcommand*{\chaptitlefont}{\color{RoyalBlue}\sffamily\HUGE\bfseries\flushright}%\flushright}
+%   \renewcommand*{\printchaptername}{%
+%     \chapnamefont\MakeUppercase{\@chapapp}}
+  \renewcommand*{\prechapternum}{\chapnamefont\MakeUppercase{Chapter}}
+  \renewcommand*{\postchapternum}{%
+                         \makebox[0pt][l]{%
+                \hspace{1em}{\color{RoyalBlue!70}\rule{\midchapskip+\spinemargin}{\beforechapskip}}
+                        }}
+   \renewcommand*{\chapternamenum}{}
+  \setlength{\beforechapskip}{18mm}%  \numberheight
+  \setlength{\midchapskip}{\paperwidth}% \barlength
+  \addtolength{\midchapskip}{-\textwidth}
+  \addtolength{\midchapskip}{-\spinemargin}
+   \renewcommand*{\printchapternum}{%
+       \hspace{1em}\resizebox{!}{\beforechapskip}{\chapnumfont \thechapter}}
+   \makeoddfoot{plain}{}{}{\normalfont\normalsize\sffamily\thepage}}
+
+\chapterstyle{KNUchapter}
+
+%% ToC space between section number and titles
+\cftsetindents{section}{0em}{4.0em}
+\cftsetindents{subsection}{3.0em}{4.0em}
+
+\setsecnumdepth{subsection}
+\maxtocdepth{subsubsection}
+
+\makeatletter
+\renewcommand\@memmain@floats{%
+  \counterwithin{figure}{section}
+  \counterwithin{table}{section}}
+\makeatother
+
+% to make reset chapter number every part
+\makeatletter
+\@addtoreset{chapter}{part}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% pdf setup
+\hypersetup{
+  pdfauthor={Seong Mo Yeon},
+  pdftitle={OpenFOAM},
+  pdfkeywords={OpenFOAM},
+  pdfsubject={OpenFOAM},
+  pdfcreator={Emacs 24.5.1},
+  pdflang={English}}
+
+\hypersetup{pdfborder={0 0 0}}
+\hypersetup{breaklinks}
+\hypersetup{pagebackref}
+\hypersetup{pdfstartpage=1}
+%% These should fix a problem with indices pointing to frontmatter instead
+%% of mainmatter.
+\hypersetup{plainpages=false,pdfpagelabels=true}
+
+%% minted
+\newcommand{\mynewminted}[3]{%
+  \newminted[#1]{#2}{#3}%
+  \tcbset{myminted/#1/.style={minted language=#2,minted options={#3,breaklines}}}
+}
+
+\mynewminted{myshell}{bash}{tabsize=2,fontsize=\footnotesize,style=bw}
+\mynewminted{mycpp}{cpp}{tabsize=2,fontsize=\footnotesize,style=colorful}
+\mynewminted{myfortran}{fortran}{tabsize=2,fontsize=\footnotesize,style=colorful}
+\mynewminted{mytcl}{tcl}{tabsize=2,fontsize=\tiny,style=colorful}
+\mynewminted{mymake}{make}{tabsize=2,fontsize=\footnotesize,style=colorful}
+\mynewminted{mylatex}{latex}{tabsize=2,fontsize=\tiny,style=colorful}
+\mynewminted{mypython}{python}{tabsize=2,fontsize=\tiny,style=colorful}
+\mynewminted{mylisp}{lisp}{tabsize=2,fontsize=\tiny,style=colorful}
+
+\newtcblisting[auto counter,number within=section,
+list inside=mypyg]{codeblock}[3][]{%
+  breakable, enhanced, listing only,title={#3},
+  colframe=white!50!black,colback=white,
+  colbacktitle=black!10!white,
+  fonttitle=\bfseries,
+  coltitle=black,
+  list entry={\protect\numberline{\thetcbcounter}#3},
+  myminted/#2,#1}
+
+\newtcblisting[auto counter,number within=section,
+list inside=mypyg]{codeblocknotitle}[2][]{%
+  breakable, enhanced, listing only,
+  colframe=white!50!black,colback=white,
+  colbacktitle=black!10!white,
+  fonttitle=,
+  coltitle=black,
+  list entry={\protect\numberline{\thetcbcounter}#2},
+  myminted/#2,#1}
+
+
+\newtcolorbox{marker}[1][]{breakable, enhanced,
+  before skip=2mm,after skip=3mm,
+  boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+  colback=yellow!50,
+  colframe=yellow!20!black,
+  sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+  underlay={%
+    \path[fill=tcbcol@back!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[draw=tcbcol@frame,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+  drop fuzzy shadow,#1}
+
+
+\newtcblisting[auto counter,number within=section,
+list inside=mypyg]{constructors}[1][]{%
+  breakable, enhanced, listing only,title={Constructors},
+  colframe=RoyalBlue!50!black,colback=white,
+  ,colbacktitle=RoyalBlue!10!white, sharp corners,
+  fonttitle=
+  \bfseries
+  ,coltitle=black,
+  attach boxed title to top left=
+  {xshift=3.2mm,yshift=0.0mm},
+  boxed title style={enhanced,
+  skin=enhancedfirst jigsaw, sharp corners,
+  size=small,bottom=0mm,
+  interior style={fill=RoyalBlue!30!white}},
+  list entry={\protect\numberline{\thetcbcounter}#1},
+  drop fuzzy shadow, myminted/mycpp, #1}
+
+\newtcblisting[auto counter,number within=section,
+list inside=mypyg]{membervariables}[1][]{%
+  breakable, enhanced, listing only,title={Member Variables},
+  colframe=RoyalBlue!50!black,colback=white,
+  ,colbacktitle=RoyalBlue!10!white, sharp corners,
+  fonttitle=
+  \bfseries
+  ,coltitle=black,
+  attach boxed title to top left=
+  {xshift=3.2mm,yshift=0.0mm},
+  boxed title style={enhanced,
+  skin=enhancedfirst jigsaw, sharp corners,
+  size=small,bottom=0mm,
+  interior style={fill=RoyalBlue!30!white}},
+  list entry={\protect\numberline{\thetcbcounter}#1},
+  drop fuzzy shadow,myminted/mycpp,#1}
+
+\newtcblisting[auto counter,number within=section,
+list inside=mypyg]{memberfunctions}[1][]{%
+  breakable, enhanced, listing only,title={Member Functions},
+  colframe=RoyalBlue!50!black,colback=white,
+  ,colbacktitle=RoyalBlue!10!white, sharp corners,
+  fonttitle=
+  \bfseries
+  ,coltitle=black,
+  attach boxed title to top left=
+  {xshift=3.2mm,yshift=0.0mm},
+  boxed title style={enhanced,
+  skin=enhancedfirst jigsaw, sharp corners,
+  size=small,bottom=0mm,
+  interior style={fill=RoyalBlue!30!white}},
+  list entry={\protect\numberline{\thetcbcounter}#1},
+  drop fuzzy shadow,myminted/mycpp,#1}
+
+\newtcblisting[auto counter,number within=section,
+list inside=mypyg]{operators}[1][]{%
+  breakable, enhanced, listing only,title={Operators},
+  colframe=RoyalBlue!50!black,colback=white,
+  ,colbacktitle=RoyalBlue!10!white, sharp corners,
+  fonttitle=
+  \bfseries
+  ,coltitle=black,
+  attach boxed title to top left=
+  {xshift=3.2mm,yshift=0.0mm},
+  boxed title style={enhanced,
+  skin=enhancedfirst jigsaw, sharp corners,
+  size=small,bottom=0mm,
+  interior style={fill=RoyalBlue!30!white}},
+  list entry={\protect\numberline{\thetcbcounter}#1},
+  drop fuzzy shadow,myminted/mycpp,#1}
+
+% Finally, we'll use \endinput to indicate that LaTeX can stop reading this file. LaTeX will ignore anything after this line.
+
+\endinput

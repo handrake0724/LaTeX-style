@@ -1,0 +1,89 @@
+% Declare that this style file requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+% Provide the name of your page, the date it was last updated, and a comment about what it's used for
+\ProvidesPackage{mykeyword}[2015/11/22 SeongMo's custom LaTeX style]
+
+% Now paste your code from the preamble here
+\usepackage{mathtools} % load amsmath macro
+\usepackage{bm} % greek bold symbol
+
+\newcommand*{\pluseq}{\mathrel{{+}{=}}}
+% \newcommand{\myvec}[1]{\vec{#1}}
+% \newcommand{\myvec}[1]{\mathbf{#1}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\onethird}{\frac{1}{3}}
+\newcommand{\onesixth}{\frac{1}{6}}
+\newcommand{\dyadic}[2]{{#1} \otimes {#2}}
+\newcommand{\myvec}[1]{\bm{#1}}
+\newcommand{\myfiltered}[1]{\overline{#1}}
+\newcommand{\coeff}[1]{\left< #1 \right>}
+\newcommand{\tr}[1]{\textbf{tr}\paren{#1}}
+\renewcommand{\det}[1]{\textbf{det}\paren{#1}}
+% \renewcommand{\div}[1]{\textrm{\textbf{div}}\left( #1 \right)}
+% \newcommand{\grad}[1]{\textrm{\textbf{grad}}\left( #1 \right)}
+% \newcommand{\curl}[1]{\textrm{\textbf{curl}}\left( #1 \right)}
+\renewcommand{\div}[2][0]{
+  \ifthenelse {\equal{#1}{0}}
+  {
+    \nabla \cdot #2
+  }
+  {
+    \nabla \cdot \left( #2 \right)
+  }
+}
+\newcommand{\grad}[2][0]{
+  \ifthenelse {\equal{#1}{0}}
+  {
+    \nabla #2
+  }
+  {
+    \nabla \left( #2 \right)
+  }
+}
+\newcommand{\curl}[2][0]{
+  \ifthenelse {\equal{#1}{0}}
+  {
+    \nabla \times #2
+  }
+  {
+    \nabla \times \left( #2 \right)
+  }
+}
+\newcommand{\laplacian}[2][0]{
+  \ifthenelse {\equal{#1}{0}}
+  {
+    \nabla^{2} #2
+  }
+  {
+    \nabla^{2}\left( #2 \right)
+  }
+}
+\newcommand{\dotprod}[2]{#1 \cdot #2}
+\newcommand{\crossprod}[2]{#1 \times #2}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\lvert\lvert #1 \rvert\rvert}
+
+\newcommand{\paren}[2][1]{%
+  \ifthenelse {\equal{#1}{1}}
+  {
+    \left( #2 \right)
+  }
+  {
+    \ifthenelse {\equal{#1}{2}}
+    {
+      \left\{ #2 \right\}
+    }
+    {
+      \ifthenelse {\equal{#1}{3}}
+      {
+        \left[ #2 \right]
+      }
+      {}
+    }
+  }
+}
+
+% Finally, we'll use \endinput to indicate that LaTeX can stop reading this file. LaTeX will ignore anything after this line.
+
+\endinput
