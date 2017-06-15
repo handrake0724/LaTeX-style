@@ -1,0 +1,51 @@
+\documentclass[twoside,chapter,openright]{xoblivoir}
+\usepackage{mystyle}
+\usepackage{mykeyword}
+%%%% keywords used for this document
+
+\author{Seong Mo Yeon}
+\date{\today}
+\title{Title}
+
+\begin{document}
+\frontmatter
+
+\begin{titlingpage}
+% title page
+\newcommand{\thesubtitle}{subtitle}
+
+\vspace*{\fill}
+\begin{center}
+\HUGE\textsf{Introduction}\par
+\end{center}
+\vspace*{\fill}
+\begin{center}
+\Huge\textsf{\thesubtitle}\par
+\end{center}
+\begin{center}
+\normalsize\textsf{Maintained by SeongMo Yeon}\par
+\end{center}
+\vspace*{\fill}
+
+\end{titlingpage}
+
+\tableofcontents
+
+\mainmatter
+\part{part 1}
+\chapter{chapter 1}
+\section{section 1}
+
+\part{part 2}
+\chapter{chapter 2}
+\section{section 1}
+
+\backmatter
+
+% \bibliography{references}
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
