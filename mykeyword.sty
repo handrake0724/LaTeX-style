@@ -17,7 +17,7 @@
 \newcommand{\dyadic}[2]{{#1} \otimes {#2}}
 \newcommand{\myvec}[1]{\bm{#1}}
 \newcommand{\myfiltered}[1]{\overline{#1}}
-\newcommand{\coeff}[1]{\left< #1 \right>}
+\newcommand{\coeff}[1]{\left\langle #1 \right\rangle}
 \newcommand{\tr}[1]{\textbf{tr}\paren{#1}}
 \renewcommand{\det}[1]{\textbf{det}\paren{#1}}
 % \renewcommand{\div}[1]{\textrm{\textbf{div}}\left( #1 \right)}
@@ -26,10 +26,10 @@
 \renewcommand{\div}[2][0]{
   \ifthenelse {\equal{#1}{0}}
   {
-    \nabla \cdot #2
+    \nabla \bullet #2
   }
   {
-    \nabla \cdot \left( #2 \right)
+    \nabla \bullet \left\lparen #2 \right\rparen
   }
 }
 \newcommand{\grad}[2][0]{
@@ -38,7 +38,7 @@
     \nabla #2
   }
   {
-    \nabla \left( #2 \right)
+    \nabla \left\lparen #2 \right\rparen
   }
 }
 \newcommand{\curl}[2][0]{
@@ -47,7 +47,7 @@
     \nabla \times #2
   }
   {
-    \nabla \times \left( #2 \right)
+    \nabla \times \left\lparen #2 \right\rparen
   }
 }
 \newcommand{\laplacian}[2][0]{
@@ -56,23 +56,23 @@
     \nabla^{2} #2
   }
   {
-    \nabla^{2}\left( #2 \right)
+    \nabla^{2}\left\lparen #2 \right\rparen
   }
 }
-\newcommand{\dotprod}[2]{#1 \cdot #2}
+\newcommand{\dotprod}[2]{#1 \bullet #2}
 \newcommand{\crossprod}[2]{#1 \times #2}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
-\newcommand{\norm}[1]{\lvert\lvert #1 \rvert\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
 
 \newcommand{\paren}[2][1]{%
   \ifthenelse {\equal{#1}{1}}
   {
-    \left( #2 \right)
+    \left\lparen #2 \right\rparen
   }
   {
     \ifthenelse {\equal{#1}{2}}
     {
-      \left\{ #2 \right\}
+      \left\lbrace #2 \right\rbrace
     }
     {
       \ifthenelse {\equal{#1}{3}}
