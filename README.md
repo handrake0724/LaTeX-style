@@ -4,13 +4,13 @@ LaTeX style file in use
 contents
 ----------
 1. mystyle.sty
-2. mykeyword.sty
+2. mymacros.sty
 3. sample.tex
 
 # mystyle.sty
 본 문서에 사용되는 문서 서식 스타일 파일
 
-# mykeyword.sty
+# mymacro.sty
 수식 작성에 사용하는 macro 모음
 
 # sample.tex
