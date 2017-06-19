@@ -4,7 +4,7 @@ LaTeX style file in use
 contents
 ----------
 1. mystyle.sty
-2. mymacros.sty
+2. mymacro.sty
 3. sample.tex
 
 # mystyle.sty
